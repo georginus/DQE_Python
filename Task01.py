@@ -12,11 +12,10 @@ rnd = sorted(rnd) # _rnd_ list sorting
 
 # list of _chetn_ values
 chetn = [i for i in rnd if i % 2 == 0] # find chetn values in _rnd_ list
-chetn_avg = sum(chetn)/len(chetn) # AVG calculation (sum/cnt)
-print('chetn AVG is: ', chetn_avg) # print chetn AVG
+print('chetn AVG is: ', sum(chetn)/len(chetn)) # print AVG calculation (sum/cnt)
 
 # list of _nechetn_ values
 nechetn = [i for i in rnd if i % 2 != 0] # find nechetn values in _rnd_ list
 # number of elements in the list
-nechetn_avg = sum(nechetn)/len(nechetn) # AVG calculation (sum/cnt)
-print('nechetn AVG is: ', nechetn_avg) # print nechetn AVG
+print('nechetn AVG is: ', sum(nechetn)/len(nechetn))# print AVG calculation (sum/cnt)
+
