@@ -13,20 +13,22 @@ def quick_sort(sequence):  # quick_sort function creation
     if length <= 1:  # if length of the sequence less or equal 1 than return sequence (doesn't matter to sort it)
         return sequence
     else:
-        pivot = sequence.pop()  # if length of the sequence more than 1 than return the last element of the sequence and then remove it
+        pivot = sequence.pop()  # if length of the sequence more than 1 than return the last element of the sequence
+        # and then remove it
 
-    items_greater = []  # list for items greater than the value in comparison
-    items_lower = []  # list for items less than the value in comparison
+    items_greater = []  # list for items greater than the value in comparison (sequence.pop())
+    items_lower = []  # list for items less than the value in comparison (sequence.pop())
 
     for item in sequence:  # loop for sequence elements
-        if item > pivot:  # if item greater than sequence.pop()
+        if item > pivot:  # if item greater than pivot element (sequence.pop())
             items_greater.append(item)  # then insert it in the items_greater list
 
-        else:  # if item less than sequence.pop()
+        else:  # if item less than pivot element (sequence.pop())
             items_lower.append(item)  # then insert it in the items_lower list
 
     return quick_sort(items_lower) + [pivot] + quick_sort(
-        items_greater)  # repeat quick_sort for items_lower and items_greater lists and return "items_lower, pivot, items_greater"
+        items_greater)  # recursive call quick_sort function for items_lower and items_greater lists and return
+    # "items_lower, pivot, items_greater"
 
 
 # print(quick_sort(rnd))
