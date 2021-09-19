@@ -4,7 +4,6 @@ from random import randrange
 rnd = []  # create empty list
 for i in range(100):  # loop: 'when i in range 0-100 do loop body'
     rnd.append(randrange(1000))  # generate and add new random value (from 0 to 1000) into _rnd_ list
-    i + 1  # increase i after each loop body execution
 
 
 # rnd = sorted(rnd) # _rnd_ list sorting
