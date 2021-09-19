@@ -3,10 +3,11 @@ from random import randrange
 # 100 random int values generating
 rnd = []  # create empty list
 for i in range(100):  # loop: 'when i in range 0-100 do loop body'
-    rnd.append(randrange(1000))  # generate and add new random value (from 0 to 1000) into _rnd_ list
+    rnd.append(randrange(1000))  # generate and add new random value (from 0 to 1000) into the rnd list
 
 
-# rnd = sorted(rnd) # _rnd_ list sorting
+# rnd = sorted(rnd) # rnd list sorting
+
 
 def quick_sort(sequence):  # quick_sort function creation
     length = len(sequence)  # calculate length of sequence
