@@ -28,8 +28,7 @@ def quick_sort(sequence):
 
     return quick_sort(items_lower) + [pivot] + quick_sort(items_greater)
 
-
-print(quick_sort(rnd))
+# print(quick_sort(rnd))
 
 # list of _chetn_ values
 chetn = [i for i in rnd if i % 2 == 0]  # find chetn values in _rnd_ list
