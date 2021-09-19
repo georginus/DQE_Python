@@ -32,7 +32,8 @@ def quick_sort(sequence):  # quick_sort function creation
     # "items_lower, pivot, items_greater"
 
 
-# print(quick_sort(rnd))
+rnd = quick_sort(rnd) # call quick_sort for the rnd list
+# print(rnd)
 
 # list of even values
 even = [i for i in rnd if i % 2 == 0]  # find even values in the rnd list
