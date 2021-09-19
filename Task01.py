@@ -33,11 +33,11 @@ def quick_sort(sequence):  # quick_sort function creation
 
 # print(quick_sort(rnd))
 
-# list of _chetn_ values
-chetn = [i for i in rnd if i % 2 == 0]  # find chetn values in _rnd_ list
-print('chetn AVG is: ', sum(chetn) / len(chetn))  # print AVG calculation (sum/cnt)
+# list of even values
+even = [i for i in rnd if i % 2 == 0]  # find even values in the rnd list
+print('AVG of even numbers is: ', sum(even) / len(even))  # print AVG calculation (sum/cnt)
 
-# list of _nechetn_ values
-nechetn = [i for i in rnd if i % 2 != 0]  # find nechetn values in _rnd_ list
+# list of odd values
+odd = [i for i in rnd if i % 2 != 0]  # find odd values in the rnd list
 # number of elements in the list
-print('nechetn AVG is: ', sum(nechetn) / len(nechetn))  # print AVG calculation (sum/cnt)
+print('AVG of odd numbers is: ', sum(odd) / len(odd))  # print AVG calculation (sum/cnt)
