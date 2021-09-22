@@ -14,6 +14,6 @@ def func(n):
     return mydict
 
 
-dict = func(26)
-print(len(dict))
-print(dict)
+mydict = func(26)
+print(len(mydict))
+print(mydict)
