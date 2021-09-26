@@ -6,14 +6,24 @@ from random import randrange
 import random
 import string
 
-
-def func(n):
-    mydict = {}
-    for i in range(n):
-        mydict[random.choice(string.ascii_lowercase)] = randrange(100)
-    return mydict
+list_dict = []
 
 
-mydict = func(26)
-print(len(mydict))
-print(mydict)
+def define_dict(n):
+    random_dict = {}
+    for i in range(26):
+        random_dict[random.choice(string.ascii_lowercase)] = randrange(100)
+    return random_dict
+
+
+random_dict = define_dict(26)
+
+for dict_count in range(10):
+    list_dict.append(random_dict)
+#    print(len(dict(random_dict)))
+#    print(dict(random_dict))
+
+
+print(list_dict)
+
+
