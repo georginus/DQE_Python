@@ -29,23 +29,23 @@ for dict_count in range(2):  # generating random numbers of random dicts from 2 
 
 for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list_dict list
     for key, value in list_dict[i].items():  # for each pair in the current element (dict) in the list_dict list do
-        if key in temp_dict.keys(): # if key exists in temp_dict
+        if key in temp_dict.keys(): # if key exists in the temp_dict
             break # then exit loop
         max_value = value # define var for max value
         dict_num = i  # define var for dict number
         num_appearance = 1 # define var for number of key appearance
-        for j in range(i + 1, len(list_dict)): # for each pair next dict
+        for j in range(i + 1, len(list_dict)): # loop to find keys in others dicts
             try:  # if the key found in the comparison dict do
                 if list_dict[j].get(key) > max_value: # if comparison value > max_value
                     max_value = list_dict[j].get(key) # then update max_value with comparison value
-                    dict_num = j # and set dict_num equal value of j
+                    dict_num = j # and set dict_num equal value of loop entry
                 num_appearance += 1 # num_appearance increment
             except:  # if the key didn't find in the comparison dict do
                 pass # exit try
-        if num_appearance == 1: # if num_appearance equal 1
+        if num_appearance == 1: # if key appearance only one time
             dict_num = '' # then dict_num equal nothing
-        else: #  if num_appearance > 1
-            dict_num = '_' + str(dict_num) # then dict_num = '_'+
+        else: # if key appearance more than one time
+            dict_num = '_' + str(dict_num) # then dict_num equal concatenate '_' + value of loop entry
         temp_dict.update({key: max_value}) # update temp_dict with original key and max_value
         common_dict.update({key + dict_num: max_value}) # update common_dict with key+dict_num and max_value
 
