@@ -23,7 +23,7 @@ def define_dict(max_dict_elements):  # create function for 1 random dict creatio
     return random_dict  # return random dict generated
 
 
-for dict_count in range(2):  # generating random numbers of random dicts from 2 to 10
+for dict_count in range(10):  # generating random numbers of random dicts from 2 to 10
     list_dict.append(define_dict(
         max_dict_elements))  # call define_dict function and insert new element in the list_dict list after each run
 
