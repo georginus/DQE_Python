@@ -1,5 +1,6 @@
-text =
-"homEwork:
+import re
+
+qqq = f"homEwork:
 
 tHis
 iz
@@ -57,4 +58,6 @@ Spaces, but
 ALL
 whitespaces.I
 got
-87."
+87.")
+
+print(text)
