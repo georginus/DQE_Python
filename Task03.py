@@ -51,21 +51,12 @@ for sentence in range(len(paragraph_list)):
     sentence_formatted = '. '.join(map(lambda s: s.strip().capitalize(), paragraph_list[sentence].split('.')))
     sentence1_formatted = sentence_formatted
     if sentence1_formatted.endswith('add it to the end of this paragraph. '):
-        final_text += sentence1_formatted + last_sentence.capitalize() + '. ' + '\n\t'
+        final_text += sentence1_formatted + last_sentence.capitalize() + '.' + '\n\t'
     else:
         final_text += sentence1_formatted + '\n\t'
 
 print(final_text)
 
-
-def check_space(string):
-    count = 0
-    # loop for search each index
-    for i in string:
-        if i == re.sub(r'\b(\s+)', '  ', final_text):
-            count += 1
-
-    return count
-
-
-print("number of spaces:", check_space(final_text))
+p = re.compile(r'(\s)')
+spaces_list = p.findall(final_text)
+print("number of spaces: ", len(spaces_list))
