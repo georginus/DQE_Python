@@ -13,13 +13,15 @@ base_text = r"""homEwork:
 
 lower_text = base_text.lower()  # all text in lowercase and
 iz_replace_text = lower_text.replace(r"“iz”", r" “iz”").replace(" iz ",
-                                                                    ' is ')  # replace iz to is # replace 'Fix“iz”'
+                                                                ' is ')  # replace iz to is # replace 'Fix“iz”'
 
 text_formatted = '\n\t'.join(map(lambda s: s.strip().capitalize(), iz_replace_text.split('\n\t')))
 
-# Function which returns last word
+
+# Function which returns words list
 def word_list(string):
-    lis = list(string.split(" "))  # split by space and converting
+    str_preformat = '. '.join(map(lambda s: s.strip().capitalize(), string.split('.')))
+    lis = list(str_preformat.strip().split(" "))  # split by space and converting
     return lis
 
 
@@ -32,6 +34,12 @@ def listToString(s):
 
 
 qlist = word_list(text_formatted)  # text in list by words
+#print(qlist)
+
+# for i in range(len(qlist)-1):
+#    j = qlist[i].replace(r'.', '')
+#    print(j)
+
 
 for i in qlist:
     r = re.compile(r'\b(\w+[.])')
@@ -41,41 +49,24 @@ for i in qlist:
 last_sentence = listToString(last_sentence)
 print(last_sentence)
 
-for i in range(len(text_formatted)):  # run loop for all elements (dicts) in the list_dict list
-    paragraph_list = list(text_formatted.split("\n\t")) # text_formatted[i].split('\n')
+# create Paragraphs list
+for i in range(len(text_formatted)):
+    paragraph_list = list(text_formatted.split("\n\t"))
 
-
+# format Paragraphs and fill temp_text string
 temp_text = ''
 for sentence in range(len(paragraph_list)):
     sentence_formatted = '. '.join(map(lambda s: s.strip().capitalize(), paragraph_list[sentence].split('.')))
-    temp_text += sentence_formatted+'\n\t'
+    temp_text += sentence_formatted + '\n\t'
 
 print(temp_text)
 
 
-def convert_list_to_string(org_list, seperator=' '):
-    return seperator.join(org_list)
 
-full_text = convert_list_to_string(paragraph_list, '\n\t') # Join all the strings in list
-# print('FULL text is:\n', full_text)
+#def convert_list_to_string(org_list, seperator=' '):
+#    return seperator.join(org_list)
 
 
-# Function which returns last word
-def word_list(string):
-    lis = list(string.split(" "))  # split by space and converting
-    return lis
+#full_text = convert_list_to_string(paragraph_list, '\n\t')  # Join all the strings in list
 
-
-# for i in range(len(last_words_list)-1):
-#    j = last_words_list[i].replace(r'.', '')
-#   print(j)
-
-
-
-
-####
-
-
-# print(last_words_list)
-#print(f"{new_text}{last_sentence}")
-
+#print(full_text)
