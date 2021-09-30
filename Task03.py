@@ -18,8 +18,23 @@ lower_text = base_text.lower()  # all text in lowercase and
 #sentences_text = '. '.join(map(lambda s: s.strip().capitalize(), lower_text.split('.\t')))  # beautiful sentences
 iz_replace_text = lower_text.replace(r"“iz”", r" “iz”").replace(" iz ",
                                                                     ' is ')  # replace iz to is # replace 'Fix“iz”'
+
+text_formatted = '\n\t'.join(map(lambda s: s.strip().capitalize(), iz_replace_text.split('\n\t')))
+
+print(text_formatted)
+
+paragraph_list = []
+for i in range(len(text_formatted)):  # run loop for all elements (dicts) in the list_dict list
+    paragraph_list = list(text_formatted.split("\n\t")) # text_formatted[i].split('\n')
+
+print('paragraph_list is: ', paragraph_list)
+
+for sentence in range(len(paragraph_list)):
+    sentence_formatted = '. '.join(map(lambda s: s.strip().capitalize(), paragraph_list[sentence].split('.')))
+    print('sentence_formatted is: ', sentence_formatted)
+
 new_text = iz_replace_text
-print(new_text)
+#print(new_text)
 
 # Function which returns last word
 def word_list(string):
@@ -45,6 +60,6 @@ def listToString(s):
 
 last_sentence = listToString(last_sentence).capitalize()
 
-print(last_sentence)
+# print(last_sentence)
 #print(f"{new_text}{last_sentence}")
 
