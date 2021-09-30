@@ -34,7 +34,7 @@ def listToString(s):
 
 
 qlist = word_list(text_formatted)  # text in list by words
-#print(qlist)
+# print(qlist)
 
 # for i in range(len(qlist)-1):
 #    j = qlist[i].replace(r'.', '')
@@ -47,7 +47,6 @@ for i in qlist:
     last_sentence = [last_words_list[w].replace(r'.', '') for w in range(len(last_words_list))]
 
 last_sentence = listToString(last_sentence)
-print(last_sentence)
 
 # create Paragraphs list
 for i in range(len(text_formatted)):
@@ -57,16 +56,10 @@ for i in range(len(text_formatted)):
 temp_text = ''
 for sentence in range(len(paragraph_list)):
     sentence_formatted = '. '.join(map(lambda s: s.strip().capitalize(), paragraph_list[sentence].split('.')))
-    temp_text += sentence_formatted + '\n\t'
+    sentence1_formatted = sentence_formatted
+    if sentence1_formatted.endswith('add it to the end of this paragraph. '):
+        temp_text += sentence1_formatted + last_sentence.capitalize()+'. '+ '\n\t'
+    else:
+        temp_text += sentence1_formatted + '\n\t'
 
 print(temp_text)
-
-
-
-#def convert_list_to_string(org_list, seperator=' '):
-#    return seperator.join(org_list)
-
-
-#full_text = convert_list_to_string(paragraph_list, '\n\t')  # Join all the strings in list
-
-#print(full_text)
