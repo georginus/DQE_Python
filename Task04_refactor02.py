@@ -55,7 +55,7 @@ for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list
         max_value = value  # define var for max value
         dict_num = i  # define var for dict number
         num_appearance = 1  # define var for number of key appearance
-        for j in range(i + 1, len(list_dict)):  # loop to find keys in others dicts
+        for j in range(i + 1, len(list_dict)):  # loop to sfind keys in others dicts
             try:  # if the key found in the comparison dict do
                 if list_dict[j].get(key) > max_value:  # if comparison value > max_value
                     max_value = list_dict[j].get(key)  # then update max_value with comparison value
