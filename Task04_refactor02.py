@@ -23,12 +23,12 @@ def max_dict_value(max_val=100):  # max dict random value
     return max_dict_val
 
 
-def random_dict_num(dict_num=10):  # random dict numbers
+def random_dict_num(dict_num):  # random dict numbers
     rnd_dict_num = int(dict_num)
     return rnd_dict_num
 
 
-def define_dict(max_dict_elements=100):  # create function for 1 random dict creation
+def define_dict(max_dict_elements):  # create function for 1 random dict creation
     dict_elem = max_dict_elements
     max_dict_val = max_dict_value()
     random_dict = {}  # create a random dict
@@ -38,7 +38,7 @@ def define_dict(max_dict_elements=100):  # create function for 1 random dict cre
     return random_dict  # return random dict generated
 
 
-def dict_count(random_dict_num):
+def dict_count(random_dict_num=10):
     cnt = random_dict_num
     dict_elem = max_dict_elements()
     for dict_count in range(cnt):  # generating random numbers of random dicts from 2 to 10
@@ -51,8 +51,9 @@ def dict_count(random_dict_num):
 # print(max_dict_value())
 # print(random_dict_num())
 #print(define_dict())
-print(dict_count(10))
+# print(dict_count(10))
 
+list_dict = dict_count()
 for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list_dict list
     for key, value in list_dict[i].items():  # for each pair in the current element (dict) in the list_dict list do
         if key in temp_dict.keys():  # if key exists in the temp_dict
