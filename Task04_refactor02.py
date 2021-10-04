@@ -17,16 +17,19 @@ def max_dict_elements(char_num=26):  # number of lowercase English letters
     max_dict_elem = int(char_num)
     return max_dict_elem
 
+
 def max_dict_value(max_val=100):  # max dict random value
     max_dict_val = int(max_val)
     return max_dict_val
+
 
 def random_dict_num(dict_num=10):  # random dict numbers
     rnd_dict_num = int(dict_num)
     return rnd_dict_num
 
-def define_dict(max_dict_elements):  # create function for 1 random dict creation
-    dict_elem = max_dict_elements()
+
+def define_dict(max_dict_elements=100):  # create function for 1 random dict creation
+    dict_elem = max_dict_elements
     max_dict_val = max_dict_value()
     random_dict = {}  # create a random dict
     for i in range(dict_elem):  # define number of random elements
@@ -35,9 +38,20 @@ def define_dict(max_dict_elements):  # create function for 1 random dict creatio
     return random_dict  # return random dict generated
 
 
-for dict_count in range(10):  # generating random numbers of random dicts from 2 to 10
-    list_dict.append(define_dict(
-        max_dict_elements))  # call define_dict function and insert new element in the list_dict list after each run
+def dict_count(random_dict_num):
+    cnt = random_dict_num
+    dict_elem = max_dict_elements()
+    for dict_count in range(cnt):  # generating random numbers of random dicts from 2 to 10
+        list_dict.append(define_dict(dict_elem))  # call define_dict function and insert new element in the list_dict
+        # list after each run
+    return list_dict
+
+
+# print(max_dict_elements())
+# print(max_dict_value())
+# print(random_dict_num())
+#print(define_dict())
+print(dict_count(10))
 
 for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list_dict list
     for key, value in list_dict[i].items():  # for each pair in the current element (dict) in the list_dict list do
