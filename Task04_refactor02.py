@@ -47,12 +47,6 @@ def dict_count(random_dict_num=10):
     return list_dict
 
 
-# print(max_dict_elements())
-# print(max_dict_value())
-# print(random_dict_num())
-#print(define_dict())
-# print(dict_count(10))
-
 list_dict = dict_count()
 for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list_dict list
     for key, value in list_dict[i].items():  # for each pair in the current element (dict) in the list_dict list do
