@@ -77,7 +77,7 @@ def processEachItemInDict(list_dict, current_dict_index, temp_dict, common_dict)
 
 
 # Main
-list_dict = generateDicts(2, 26, 100)
+list_dict = generateDicts(10, 26, 100)
 
 for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list_dict list
     processEachItemInDict(list_dict, i, temp_dict, common_dict)
