@@ -78,9 +78,6 @@ def process_each_item_in_dict(list_dict, current_dict_index, temp_dict, common_d
 
 
 # Main
-temp_dict = {}  # create a temporary dict for keys existence check
-common_dict = {}
-
 list_dict = generate_dicts(10, 26, 100)
 
 for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list_dict list
