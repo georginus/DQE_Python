@@ -49,11 +49,10 @@ for i in range(len(text_formatted)):
 final_text = ''
 for sentence in range(len(paragraph_list)):
     sentence_formatted = '. '.join(map(lambda s: s.strip().capitalize(), paragraph_list[sentence].split('.')))
-    sentence1_formatted = sentence_formatted
-    if sentence1_formatted.endswith('add it to the end of this paragraph. '):
-        final_text += sentence1_formatted + last_sentence.capitalize() + '.' + '\n\t'
+    if sentence_formatted.endswith('add it to the end of this paragraph. '):
+        final_text += sentence_formatted + last_sentence.capitalize() + '.' + '\n\t'
     else:
-        final_text += sentence1_formatted + '\n\t'
+        final_text += sentence_formatted + '\n\t'
 
 print(final_text)
 
