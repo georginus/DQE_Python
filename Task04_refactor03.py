@@ -68,6 +68,7 @@ last_sentence = listToString(generateLastSentence(list_by_words))
 paragraph_list = generateParagraphList(text_formatted)
 final_text = generateFinalText(paragraph_list, 'add it to the end of this paragraph. ')
 
+
 # print result
 print(final_text)
 
