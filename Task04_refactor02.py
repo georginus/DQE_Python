@@ -66,7 +66,7 @@ for i in range(len(list_dict)):  # run loop for all elements (dicts) in the list
         if num_appearance == 1:  # if key appearance only one time
             dict_num = ''  # then dict_num equal nothing
         else:  # if key appearance more than one time
-            dict_num = '_' + str(dict_num)  # then dict_num equal concatenate '_' + value of loop entry
+            dict_num = '_' + str(dict_num+1)  # then dict_num equal concatenate '_' + value of loop entry
         temp_dict.update({key: max_value})  # update temp_dict with original key and max_value
         common_dict.update({key + dict_num: max_value})  # update common_dict with key+dict_num and max_value
 
