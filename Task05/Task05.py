@@ -10,8 +10,8 @@ class MyExample:
 spider = MyExample('Spider', 6)
 human = MyExample('Human', 2)
 
-spider.printIt()
-human.printIt()
+#spider.printIt()
+#human.printIt()
 
 
 class Post:
@@ -20,14 +20,17 @@ class Post:
 
 
 class Adv(Post):
-    def customer(self):
-        print('customer is Epam')
+    def __init__(self, name, customer):
+        Post.__init__(self, name)
+        self.customer = customer
 
-    pass
+    def customer_is(self):
+        print(f'{self.name}: customer is {self.customer}')
+
 
 
 post = Post('News')
-adv = Adv('Adv')
+adv = Adv('Adv', 'Epam')
+adv.customer_is()
 
-print(post.name)
-print(adv.name, ' ', adv.customer())
+
