@@ -7,6 +7,10 @@ class MyExample:
         print(f'{self.who} has {self.legs} legs')
 
 
-qqq = MyExample('spider', 6)
+spider = MyExample('Spider', 6)
+human = MyExample('Human', 2)
 
-qqq.printIt()
+spider.printIt()
+human.printIt()
+
+
