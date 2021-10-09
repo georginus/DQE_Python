@@ -60,20 +60,29 @@ lifehack1.printPost()
 def formPost():
     is_input_correct = False
     while not is_input_correct:
-        post_code = int(input(f'Input Post code:\n\t1 - News\n\t2 - Private Ad\n\t3 - LifeHack3\n'))
+        post_code = int(input(f'Input Post code:\n\t1 - News\n\t2 - Private Ad\n\t3 - LifeHack\n'))
         if 0 < post_code < 4:
             break
         else:
             print(f'Incorrect Post code. Please try again...\n')
     if post_code == 1:
         text = input('Enter News text:')
-
+        city = input('Enter News city:')
+        News(text, city).printPost()
     elif post_code == 2:
-        text = input('Enter News text:')
-
+        text = input('Enter Private Ad text:')
+        end_date = input('Enter Private Ad end date(dd/mm/yyyy):')
+        PrivateAd(text, end_date).printPost()
     else:
-        text = input('Enter News text:')
+        text = input('Enter LifeHack text:')
+        hashtag = input('Enter LifeHack hashtag:')
+        LifeHack(text, hashtag).printPost()
 
 
 
-#formPost()
+#---MAIN---
+if_continue = True
+while if_continue:
+    formPost()
+    answer = input('Do you want to continue?(y/n)')
+
