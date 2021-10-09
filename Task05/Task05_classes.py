@@ -17,19 +17,20 @@ class Post:
 
 class PrivateAd(Post):
     def __init__(self, text, end_date, name='PrivateAd'):
-        Post.__init__(self, name, text)
+        Post.__init__(self, text, name)
         self.end_date = datetime.strptime(end_date, '%d/%m/%Y').date()
         self.delta = (self.end_date - self.post_date.date()).days
         self.end_date_formatted = self.end_date.strftime('%d/%m/%Y')
 
     def printPost(self):
-        print(f'{self.name} -------------------\n{self.text}\nActual until: {self.end_date_formatted}, {self.delta} days '
-              f'left\n------------------------------\n')
+        print(
+            f'{self.name} -------------------\n{self.text}\nActual until: {self.end_date_formatted}, {self.delta} days '
+            f'left\n------------------------------\n')
 
 
 class News(Post):
     def __init__(self, text, city, name='News'):
-        Post.__init__(self, name, text)
+        Post.__init__(self, text, name)
         self.city = city
 
     def printPost(self):
@@ -39,7 +40,7 @@ class News(Post):
 
 class LifeHack(Post):
     def __init__(self, text, hashtag, name='LifeHack'):
-        Post.__init__(self, name, text)
+        Post.__init__(self, text, name)
         self.hashtag = hashtag
 
     def printPost(self):
@@ -47,14 +48,14 @@ class LifeHack(Post):
               f'------------------------------\n')
 
 
-ad1 = PrivateAd('Private Ad', 'TEXT', '31/10/2021')
-ad1.printPost()
-
-news1 = News('News', 'News text', 'Minsk')
-news1.printPost()
-
-lifehack1 = LifeHack('LifeHack', 'Text', 'Food')
-lifehack1.printPost()
+# ad1 = PrivateAd('Private Ad', 'TEXT', '31/10/2021')
+# ad1.printPost()
+#
+# news1 = News('News', 'News text', 'Minsk')
+# news1.printPost()
+#
+# lifehack1 = LifeHack('LifeHack', 'Text', 'Food')
+# lifehack1.printPost()
 
 
 def formPost():
@@ -79,10 +80,8 @@ def formPost():
         LifeHack(text, hashtag).printPost()
 
 
-
-#---MAIN---
-if_continue = True
-while if_continue:
+# ---Main---
+if_continue = 'y'
+while if_continue == 'y':
     formPost()
-    answer = input('Do you want to continue?(y/n)')
-
+    if_continue = input('Do you want to continue?(y/N)')
