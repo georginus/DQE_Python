@@ -2,14 +2,11 @@ from datetime import datetime, date
 
 
 class Post:
-    def __init__(self, name):
+    def __init__(self, text, name):
         self.name = name
-        self.text = ''
+        self.text = text
         self.post_date = datetime.today()
         self.date_formatted = self.post_date.strftime('%d/%m/%Y %H.%M')
-
-    def setText(self):
-        self.text = input('Enter text:')
 
     def printName(self):
         print(self.name)
@@ -19,30 +16,21 @@ class Post:
 
 
 class PrivateAd(Post):
-    def __init__(self, name='Private Ad', end_date=datetime.today().date()):
-        Post.__init__(self, name)
-        self.end_date = end_date
-        self.delta = 0
-        self.end_date_formatted = end_date
-
-    def set_end_date(self):
-        self.end_date = datetime.strptime(input('Enter end date(dd/mm/yyyy):'), '%d/%m/%Y').date()
-        self.end_date_formatted = self.end_date.strftime('%d/%m/%Y')
+    def __init__(self, text, end_date, name='PrivateAd'):
+        Post.__init__(self, name, text)
+        self.end_date = datetime.strptime(end_date, '%d/%m/%Y').date()
         self.delta = (self.end_date - self.post_date.date()).days
+        self.end_date_formatted = self.end_date.strftime('%d/%m/%Y')
 
     def printPost(self):
-        print(
-            f'{self.name} -------------------\n{self.text}\nActual until: {self.end_date_formatted}, {self.delta} days '
-            f'left\n------------------------------\n')
+        print(f'{self.name} -------------------\n{self.text}\nActual until: {self.end_date_formatted}, {self.delta} days '
+              f'left\n------------------------------\n')
 
 
 class News(Post):
-    def __init__(self, city='Minsk', name='News'):
-        Post.__init__(self, name)
+    def __init__(self, text, city, name='News'):
+        Post.__init__(self, name, text)
         self.city = city
-
-    def set_city(self):
-        self.city = input('Enter city:')
 
     def printPost(self):
         print(f'{self.name} -------------------------\n{self.text}\n{self.city}, {self.date_formatted}\n'
@@ -50,8 +38,8 @@ class News(Post):
 
 
 class LifeHack(Post):
-    def __init__(self, hashtag, name='LifeHack'):
-        Post.__init__(self, name)
+    def __init__(self, text, hashtag, name='LifeHack'):
+        Post.__init__(self, name, text)
         self.hashtag = hashtag
 
     def printPost(self):
@@ -59,17 +47,13 @@ class LifeHack(Post):
               f'------------------------------\n')
 
 
-ad1 = PrivateAd()
-ad1.setText()
-ad1.set_end_date()
+ad1 = PrivateAd('Private Ad', 'TEXT', '31/10/2021')
 ad1.printPost()
 
-news1 = News('Minsk')
-news1.setText()
+news1 = News('News', 'News text', 'Minsk')
 news1.printPost()
 
-lifehack1 = LifeHack('Food')
-lifehack1.setText()
+lifehack1 = LifeHack('LifeHack', 'Text', 'Food')
 lifehack1.printPost()
 
 
@@ -82,14 +66,14 @@ def formPost():
         else:
             print(f'Incorrect Post code. Please try again...\n')
     if post_code == 1:
-        pass
-        #buildNews('News')
+        text = input('Enter News text:')
+
     elif post_code == 2:
-        pass
-        #buldPrivateAd()
+        text = input('Enter News text:')
+
     else:
-        pass
-        #buildLifeHack()
+        text = input('Enter News text:')
+
 
 
 #formPost()
