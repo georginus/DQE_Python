@@ -1,9 +1,14 @@
+import re
+from datetime import datetime
+from sqlite3 import Date
+
+
 class Post:
     def __init__(self, name):
         self.name = name
 
     def publish_date(self):
-        print('Today')
+        print(Date.today())
 
 
 class Adv(Post):
@@ -13,3 +18,5 @@ class Adv(Post):
 
     def customer_is(self):
         print(f'{self.name}: customer is {self.customer}')
+
+post = Post('News')
