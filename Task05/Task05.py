@@ -18,6 +18,9 @@ class Post:
     def __init__(self, name):
         self.name = name
 
+    def publish_date(self):
+        print('Today')
+
 
 class Adv(Post):
     def __init__(self, name, customer):
@@ -32,5 +35,6 @@ class Adv(Post):
 post = Post('News')
 adv = Adv('Adv', 'Epam')
 adv.customer_is()
+adv.publish_date()
 
 
