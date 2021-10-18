@@ -1,6 +1,6 @@
 #import sys
 #sys.path.append('./Task04_refactor03')
-from Task04_refactor03 import Task04_refactor03
+from Refactor03 import *
 
 # Main
 base_text = r"""homEwork:

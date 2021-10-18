@@ -1,8 +1,9 @@
 import sys
-
-from Task04_refactor03 import formatText
-
 sys.path.append('../Task05')
+sys.path.append('../Task04_refactor03')
+
+from Refactor03 import formatText
+
 from Post import Post
 from News import News
 from PrivateAd import PrivateAd
