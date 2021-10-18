@@ -7,5 +7,5 @@ class News(Post):
         self.city = city
 
     def printPost(self):
-        return (f'\n{self.name} -------------------------\n{self.text}\n{self.city}, {self.date_formatted}\n'
-                f'------------------------------\n')
+        return (f'{self.name} -------------------------\n{self.text}\n{self.city}, {self.date_formatted}\n'
+                f'------------------------------\n\n')
