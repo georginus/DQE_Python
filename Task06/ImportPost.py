@@ -75,3 +75,9 @@ def parseSrc(src_text):
             post = LifeHack(text, hashtag)
         fileWrite(post.printPost())
     return
+
+#print(parseSrc('./task06_src.txt'))
+#print(fileRead('./task06_src.txt'))
+#a = fileRead('./task06_src.txt')
+#b = sentenceFormatted(a)
+#print(a[0])
