@@ -1,5 +1,0 @@
-1---text News. new news.---City
-1---text2 News. new news.---Minsk
-2---text PrivateAd. private AD.---21/11/2021
-2---text2 PrivateAd. private AD2.---30/11/2021
-3---text LifeHack. LIFEhack.---hashtag

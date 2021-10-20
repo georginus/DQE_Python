@@ -1,4 +1,5 @@
 import re
+import csv
 
 
 def fileRead(filepath='../Task06/task06_result.txt'):
@@ -69,17 +70,30 @@ def countLetterAppearance(upper=upperLowerLettersDict()[0], lower=upperLowerLett
     return count_all_dict
 
 
-def totalLettersCount(letters = list_of_letters()):
+def totalLettersCount(letters=list_of_letters()):
     return len(letters)
 
 
-def resultFileCreation(total = totalLettersCount(), upper=upperLowerLettersDict()[0], count_letter_appearance = countLetterAppearance()):
-    for key, value in count_letter_appearance.items():
-        percent = round(value/total*100, 2)
-        upper_count = upper.get(key.upper())
-        if upper_count is None:
-            upper_count = 0
-        print(key, value, upper_count, str(percent)+'%')
+def resultFile2Creation(total=totalLettersCount(), upper=upperLowerLettersDict()[0],
+                       count_letter_appearance=countLetterAppearance()):
+    with open('../Task07/task07_02.csv', 'w', newline='') as csv_file:
+        header = ['letter', 'count_all', 'count_uppercase', 'percentage']
+        writer = csv.DictWriter(csv_file, fieldnames=header)
+        writer.writeheader()
+        for key, value in count_letter_appearance.items():
+            percent = round(value / total * 100, 2)
+            upper_count = upper.get(key.upper())
+            if upper_count is None:
+                upper_count = 0
+            writer.writerow(
+                {'letter': key, 'count_all': value, 'count_uppercase': upper_count, 'percentage': str(percent) + '%'})
+            # print(key, value, upper_count, str(percent)+'%')
 
 
-print(resultFileCreation())
+def resultFile1Creation(count_words=None):
+    if count_words is None:
+        count_words = countElements(wordsInLower())
+    with open('../Task07/task07_01.csv', 'w', newline='') as csv_file:
+        writer = csv.writer(csv_file, delimiter='-')
+        for key, value in count_words.items():
+            writer.writerow([key, value])
