@@ -35,6 +35,18 @@ json.dump(qqq, open('my_dump_to_json.json', 'w'))
 ### load - from json to dict
 qqq_load = json.load(open('my_dump_to_json.json'))
 
-print(type(qqq_load))
-print(qqq_load)
+#print(type(qqq_load))
+#print(qqq_load)
+
+### dumps and loads
+
+astr = json.dumps(qqq)
+#print(astr)
+
+json_loads = json.loads(astr)
+#print(json_loads)
+
+### indent - output as json structure
+#print(json.dumps(json_loads, indent=2))
+
 
