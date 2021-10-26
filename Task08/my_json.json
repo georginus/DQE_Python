@@ -2,13 +2,13 @@
   "post_code": "1",
   "post_name": "News",
   "post_text": "News text",
-  "date": "2021/10/25"
+  "post_city": "postCity"
 },
 {
   "post_code": "2",
   "post_name": "PrivateAd",
   "post_text": "PrivateAd text",
-  "date": "2021/11/30"
+  "end_date": "30/11/2021"
 },
 {
   "post_code": "3",

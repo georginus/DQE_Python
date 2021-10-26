@@ -1,17 +1,23 @@
-import os
 import sys
+import os
+import json
 
 sys.path.append('../Task05')
+sys.path.append('../Task06')
+sys.path.append('../Task07')
 sys.path.append('../Task04_refactor03')
 
-from Refactor03 import formatText
+# from Refactor03 import formatText
 from News import News
 from PrivateAd import PrivateAd
 from LifeHack import LifeHack
 from formPost import formPost
+from ImportPost import writePosts
+from ImportPost import fileWrite
+from Task07_functions import *
 
 
-def writePosts(src_file_path='./', src_file_name='task06_src.txt'):
+def writePosts(src_file_path='./', src_file_name='my_json.json'):
     is_input_correct = False
     while not is_input_correct:
         user_Choice = int(input(f'Enter \n\t1 if you want to use default path \n\t2 if you want to provide your path '
@@ -38,46 +44,35 @@ def writePosts(src_file_path='./', src_file_name='task06_src.txt'):
         pass
 
 
-def fileRead(filepath):
-    f = open(filepath, 'r')
-    src_text = f.read().splitlines()
-    f.close()
-    return src_text
-
-
-def fileWrite(text, result_file_path='./', result_file_name='task_result.txt'):
-    f = open(result_file_path + result_file_name, 'a')
-    f.write(text)
-    f.close()
-    return
-
-
-def sentenceFormatted(text):
-    sentence_formatted = '. '.join(map(lambda s: s.strip().capitalize(), formatText(text).split('.')))
-    return sentence_formatted
+def fileRead(file_path='./', file_name='my_json.json'):
+    json_file = json.load(open(file_path + file_name))
+    return json_file
 
 
 def parseSrc(src_text):
-    for element in src_text:
-        parsed_list = element.split('---')
-        post_code = parsed_list[0]
+    for element in range(len(src_text)):
+        json_list = src_text[element]
+        post_code = json_list["post_code"]
         if post_code == '1':
-            text = sentenceFormatted(parsed_list[1])
-            city = parsed_list[2]
+            text = json_list["post_text"]
+            city = json_list["post_city"]
             post = News(text, city)
+            print(post_code, ' ', text, ' ', city, ' ')
         elif post_code == '2':
-            text = sentenceFormatted(parsed_list[1])
-            end_date = parsed_list[2]
+            text = json_list["post_text"]
+            end_date = json_list["end_date"]
             post = PrivateAd(text, end_date)
+            print(post_code, ' ', text, ' ', end_date, ' ')
         elif post_code == '3':
-            text = sentenceFormatted(parsed_list[1])
-            hashtag = parsed_list[2]
+            text = json_list["post_text"]
+            hashtag = json_list["hashtag"]
             post = LifeHack(text, hashtag)
+            print(post_code, ' ', text, ' ', hashtag, ' ')
         fileWrite(post.printPost())
     return
 
-#print(parseSrc('./task06_src.txt'))
-#print(fileRead('./task06_src.txt'))
-#a = fileRead('./task06_src.txt')
-#b = sentenceFormatted(a)
-#print(a[0])
+
+# Main
+# writePosts()
+# print(fileRead())
+parseSrc(fileRead())
