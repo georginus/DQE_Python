@@ -7,14 +7,12 @@ sys.path.append('../Task06')
 sys.path.append('../Task07')
 sys.path.append('../Task04_refactor03')
 
-# from Refactor03 import formatText
 from News import News
 from PrivateAd import PrivateAd
 from LifeHack import LifeHack
 from formPost import formPost
-from ImportPost import writePosts
 from ImportPost import fileWrite
-from Task07_functions import *
+#from ImportPost import writePosts
 
 
 def writePosts(src_file_path='./', src_file_name='my_json.json'):
@@ -30,11 +28,11 @@ def writePosts(src_file_path='./', src_file_name='my_json.json'):
         if user_Choice == 1:
             filepath = src_file_path + src_file_name
             parseSrc(fileRead(filepath))
-            os.remove(filepath)
+            # os.remove(filepath)
         elif user_Choice == 2:
             filepath = input(f'Enter file path')
             parseSrc(fileRead(filepath))
-            os.remove(filepath)
+            # os.remove(filepath)
         else:
             if_continue = 'y'
             while if_continue == 'y':
@@ -44,8 +42,8 @@ def writePosts(src_file_path='./', src_file_name='my_json.json'):
         pass
 
 
-def fileRead(file_path='./', file_name='my_json.json'):
-    json_file = json.load(open(file_path + file_name))
+def fileRead(file_path):
+    json_file = json.load(open(file_path))
     return json_file
 
 
@@ -57,22 +55,16 @@ def parseSrc(src_text):
             text = json_list["post_text"]
             city = json_list["post_city"]
             post = News(text, city)
-            print(post_code, ' ', text, ' ', city, ' ')
+            #print(post_code, ' ', text, ' ', city, ' ')
         elif post_code == '2':
             text = json_list["post_text"]
             end_date = json_list["end_date"]
             post = PrivateAd(text, end_date)
-            print(post_code, ' ', text, ' ', end_date, ' ')
+            #print(post_code, ' ', text, ' ', end_date, ' ')
         elif post_code == '3':
             text = json_list["post_text"]
             hashtag = json_list["hashtag"]
             post = LifeHack(text, hashtag)
-            print(post_code, ' ', text, ' ', hashtag, ' ')
+            #print(post_code, ' ', text, ' ', hashtag, ' ')
         fileWrite(post.printPost())
     return
-
-
-# Main
-# writePosts()
-# print(fileRead())
-parseSrc(fileRead())
