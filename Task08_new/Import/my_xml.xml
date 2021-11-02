@@ -1,0 +1,38 @@
+<my_xml>
+    <post>
+      <post_code>1</post_code>
+      <post_name>News</post_name>
+      <post_text>News text</post_text>
+      <city>NewsCity</city>
+    </post>
+    <post>
+      <post_code>1</post_code>
+      <post_name>News</post_name>
+      <post_text>News2 text</post_text>
+      <city>News2City</city>
+    </post>
+    <post>
+      <post_code>2</post_code>
+      <post_name>PrivateAd</post_name>
+      <post_text>PrivateAd text</post_text>
+      <date>30/11/2021</date>
+    </post>
+    <post>
+      <post_code>2</post_code>
+      <post_name>PrivateAd</post_name>
+      <post_text>PrivateAd2 text</post_text>
+      <date>31/12/2021</date>
+    </post>
+    <post>
+      <post_code>3</post_code>
+      <post_name>Lifehack</post_name>
+      <post_text>Lifehack text</post_text>
+      <hashtag>hashtag1</hashtag>
+    </post>
+    <post>
+      <post_code>3</post_code>
+      <post_name>Lifehack</post_name>
+      <post_text>Lifehack2 text</post_text>
+      <hashtag>hashtag2</hashtag>
+    </post>
+</my_xml>

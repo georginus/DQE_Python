@@ -1,0 +1,18 @@
+[{
+  "post_code": "1",
+  "post_name": "News",
+  "post_text": "News text",
+  "post_city": "postCity"
+},
+{
+  "post_code": "2",
+  "post_name": "PrivateAd",
+  "post_text": "PrivateAd text",
+  "end_date": "30/11/2021"
+},
+{
+  "post_code": "3",
+  "post_name": "Lifehack",
+  "post_text": "Lifehack JSON text",
+  "hashtag": "hashtag"
+}]

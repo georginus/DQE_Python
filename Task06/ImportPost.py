@@ -45,7 +45,7 @@ def fileRead(filepath):
     return src_text
 
 
-def fileWrite(text, result_file_path='../', result_file_name='task_result.txt'):
+def fileWrite(text, result_file_path='../', result_file_name='result.txt'):
     f = open(result_file_path + result_file_name, 'a')
     f.write(text)
     f.close()
