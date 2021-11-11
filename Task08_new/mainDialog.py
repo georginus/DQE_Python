@@ -5,11 +5,15 @@ from FileJson import FileJson
 from FileTxt import FileTxt
 from FileXml import FileXml
 from defineFileExtension import defineFileExtension
+from Task08_new.classConnection import DBConnection
 
 
 def writePosts():
     is_input_correct = False
     user_choice = 0
+    DBConnection().createTableNews()
+    DBConnection().createTablePrivateAd()
+    DBConnection().createTableLifehack()
     while not is_input_correct:
         user_choice = int(input(f'Enter \n\t1 if you want to use default path to TXT file \n\t2 if you want to provide your path '
                                 f'\n\t3 if you want to enter post manually'))

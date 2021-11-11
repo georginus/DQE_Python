@@ -13,3 +13,4 @@ class Post:
 
     def printText(self):
         print(self.text)
+
