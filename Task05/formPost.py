@@ -13,31 +13,30 @@ def formPost():
             break
         else:
             print(f'Incorrect Post code. Please try again...\n')
+    db = DBConnection()
     if post_code == 1:
         text = input('Enter News text:')
         city = input('Enter News city:')
         news = News(text, city)
         post = news.printPost()
-        values = f"{post_code}, 'News', '{text}', '{city}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
-        db = DBConnection()
-        db.insert('News', values)
-        db.closeCursor()
+        post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
+        db.insertNews(post_code, text, city, post_date)
     elif post_code == 2:
         text = input('Enter Private Ad text:')
         end_date = input('Enter Private Ad end date(dd/mm/yyyy):')
         ad = PrivateAd(text, end_date)
         post = ad.printPost()
-        values = f"{post_code}, 'PrivateAd', '{text}', '{end_date}'"
-        db = DBConnection()
-        db.insert('PrivateAd', values)
-        db.closeCursor()
+        db.insertPrivateAd(post_code, text, end_date)
     else:
         text = input('Enter LifeHack text:')
         hashtag = input('Enter LifeHack hashtag:')
         lifehack = LifeHack(text, hashtag)
         post = lifehack.printPost()
-        values = f"{post_code}, 'Lifehack', '{text}', '{hashtag}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
-        db = DBConnection()
-        db.insert('Lifehack', values)
-        db.closeCursor()
+        post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
+        db.insertLifehack(post_code, text, hashtag, post_date)
+    db.closeCursor()
     return post
+
+
+
+

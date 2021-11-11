@@ -9,6 +9,7 @@ from Task05.LifeHack import LifeHack
 from Task08_new.DBConnection import DBConnection
 from datetime import datetime
 
+
 class FileTxt:
     @staticmethod
     def fileReadTxt(importfilepath='./Import/my_txt.txt'):
@@ -35,23 +36,27 @@ class FileTxt:
                 text = sentenceFormatted(parsed_list[1])
                 city = parsed_list[2]
                 post = News(text, city)
-                values = f"{post_code}, 'News', \"{text}\", '{city}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
-                db.insert('News', values)
+                post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
+                db.insertNews(post_code, text, city, post_date)
             elif post_code == '2':
                 text = sentenceFormatted(parsed_list[1])
                 end_date = parsed_list[2]
                 post = PrivateAd(text, end_date)
-                values = f"{post_code}, 'PrivateAd', \"{text}\", '{end_date}'"
-                db.insert('PrivateAd', values)
+                db.insertPrivateAd(post_code, text, end_date)
             elif post_code == '3':
                 text = sentenceFormatted(parsed_list[1])
                 hashtag = parsed_list[2]
                 post = LifeHack(text, hashtag)
-                values = f"{post_code}, 'Lifehack', \"{text}\", '{hashtag}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
-                db.insert('Lifehack', values)
+                post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
+                db.insertLifehack(post_code, text, hashtag, post_date)
             else:
                 post = News('', '')
             self.fileWriteTxt('../result.txt', post.printPost())
         db.closeCursor()
 
 # FileTxt().parseFileTxt(FileTxt.fileReadTxt())
+
+# db.insertNews(post_code, text, city, post_date)
+# db.insertPrivateAd(post_code, text, end_date)
+# post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
+# db.insertLifehack(post_code, text, hashtag, post_date)

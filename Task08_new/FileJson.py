@@ -31,20 +31,19 @@ class FileJson:
                 text = json_dict["post_text"]
                 city = json_dict["post_city"]
                 post = News(text, city)
-                values = f"{post_code}, 'News', \"{text}\", '{city}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
-                db.insert('News', values)
+                post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
+                db.insertNews(post_code, text, city, post_date)
             elif post_code == '2':
                 text = json_dict["post_text"]
                 end_date = json_dict["end_date"]
                 post = PrivateAd(text, end_date)
-                values = f"{post_code}, 'PrivateAd', \"{text}\", '{end_date}'"
-                db.insert('PrivateAd', values)
+                db.insertPrivateAd(post_code, text, end_date)
             elif post_code == '3':
                 text = json_dict["post_text"]
                 hashtag = json_dict["hashtag"]
                 post = LifeHack(text, hashtag)
-                values = f"{post_code}, 'Lifehack', \"{text}\", '{hashtag}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
-                db.insert('Lifehack', values)
+                post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
+                db.insertLifehack(post_code, text, hashtag, post_date)
             else:
                 post = News('', '')
             self.fileWriteJson(self.fileWriteJson(), post.printPost())
