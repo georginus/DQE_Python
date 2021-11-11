@@ -5,7 +5,7 @@ from FileJson import FileJson
 from FileTxt import FileTxt
 from FileXml import FileXml
 from defineFileExtension import defineFileExtension
-from Task08_new.classConnection import DBConnection
+from Task08_new.DBConnection import DBConnection
 
 
 def writePosts():

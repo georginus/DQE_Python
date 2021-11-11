@@ -6,7 +6,8 @@ sys.path.append('../Task05')
 from Task05.News import News
 from Task05.PrivateAd import PrivateAd
 from Task05.LifeHack import LifeHack
-
+from Task08_new.DBConnection import DBConnection
+from datetime import datetime
 
 class FileJson:
     @staticmethod
@@ -22,6 +23,7 @@ class FileJson:
         return output_file_path
 
     def parseFileJson(self, src_text):
+        db = DBConnection()
         for element in range(len(src_text)):
             json_dict = src_text[element]
             post_code = json_dict["post_code"]
@@ -29,17 +31,24 @@ class FileJson:
                 text = json_dict["post_text"]
                 city = json_dict["post_city"]
                 post = News(text, city)
+                values = f"{post_code}, 'News', \"{text}\", '{city}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
+                db.insert('News', values)
             elif post_code == '2':
                 text = json_dict["post_text"]
                 end_date = json_dict["end_date"]
                 post = PrivateAd(text, end_date)
+                values = f"{post_code}, 'PrivateAd', \"{text}\", '{end_date}'"
+                db.insert('PrivateAd', values)
             elif post_code == '3':
                 text = json_dict["post_text"]
                 hashtag = json_dict["hashtag"]
                 post = LifeHack(text, hashtag)
+                values = f"{post_code}, 'Lifehack', \"{text}\", '{hashtag}', '{datetime.today().strftime('%d/%m/%Y %H.%M')}'"
+                db.insert('Lifehack', values)
             else:
                 post = News('', '')
             self.fileWriteJson(self.fileWriteJson(), post.printPost())
+        db.closeCursor()
 
 
 #file_json = FileJson()

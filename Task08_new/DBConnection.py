@@ -23,12 +23,16 @@ class DBConnection:
 
     def insert(self, table, values):
         self.cur.execute(f"insert into {table} values ({values})")
+        print(f"Inserted into {table}")
+        self.connection.commit()
 
     def closeCursor(self):
         self.cur.close()
 
 
-dbcon = DBConnection()
-# #
-# # # dbcon.insert('people', "'Gavrila', 'Chichenkov', '4'")
-print(dbcon.select('News', 'post_code'))
+# dbcon = DBConnection()
+# #dbcon.insert('News', "1, 'News', 'text', 'city', '11/12/2021'")
+#
+# print(dbcon.select('News', '*'))
+# print(dbcon.select('PrivateAd', '*'))
+# print(dbcon.select('Lifehack', '*'))

@@ -1,7 +1,7 @@
 from News import News
 from PrivateAd import PrivateAd
 from LifeHack import LifeHack
-from Task08_new.classConnection import DBConnection
+from Task08_new.DBConnection import DBConnection
 from datetime import datetime
 
 
