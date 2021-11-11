@@ -7,6 +7,7 @@ from datetime import datetime
 
 def formPost():
     is_input_correct = False
+    post_code = 0
     while not is_input_correct:
         post_code = int(input(f'Input Post code:\n\t1 - News\n\t2 - Private Ad\n\t3 - LifeHack\n'))
         if 0 < post_code < 4:

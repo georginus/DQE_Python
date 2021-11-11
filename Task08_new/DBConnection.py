@@ -27,25 +27,26 @@ class DBConnection:
         self.connection.commit()
 
     def checkNewsDuplicates(self, post_code, post_text, post_city):
-        return self.cur.execute(f'select count(*) from News where post_code = {post_code} '
-                                f'and post_text = {post_text} '
-                                f'and post_city = {post_city}').fetchall()
+        return self.cur.execute(f'select count(*) from News as N where N.post_code = {post_code} '
+                                f'and N.post_text = \'{post_text}\' '
+                                f'and N.post_city = \'{post_city}\'').fetchall()[0][0]
 
     def checkPrivateAdDuplicates(self, post_code, post_text, expiration_date):
         return self.cur.execute(f'select count(*) from PrivateAd where post_code = {post_code} '
-                                f'and post_text = {post_text} '
-                                f'and expiration_date = {expiration_date}').fetchall()
+                                f'and post_text = \'{post_text}\''
+                                f'and expiration_date = \'{expiration_date}\'').fetchall()
 
     def checkLifehackDuplicates(self, post_code, post_text, hashtag):
         return self.cur.execute(f'select count(*) from Lifehack where post_code = {post_code} '
-                                f'and post_text = {post_text} '
-                                f'and hashtag = {hashtag}').fetchall()
+                                f'and post_text = \'{post_text}\' '
+                                f'and hashtag = \'{hashtag}\'').fetchall()
 
     def insertNews(self, post_code, post_text, post_city, post_date):
-        if self.checkNewsDuplicates(post_code, post_text, post_city)[0] >= 1:
+        # print(self.checkNewsDuplicates(post_code, post_text, post_city))
+        if self.checkNewsDuplicates(post_code, post_text, post_city) >= 1:
             print(f'Record {post_code}, {post_text}, {post_city} already exists')
         else:
-            self.cur.execute(f"insert into News values ({post_code}, 'News', {post_text}, {post_city}, {post_date})")
+            self.cur.execute(f"insert into News values ({post_code}, 'News', \'{post_text}\', \'{post_city}\', \'{post_date}\')")
             print(f"Inserted into News")
             self.connection.commit()
 
@@ -53,7 +54,7 @@ class DBConnection:
         if self.checkPrivateAdDuplicates(post_code, post_text, post_date)[0] >= 1:
             print(f'Record {post_code}, {post_text}, {post_date} already exists')
         else:
-            self.cur.execute(f"insert into PrivateAd values ({post_code}, 'PrivateAd', {post_text}, {post_date})")
+            self.cur.execute(f"insert into PrivateAd values ({post_code}, 'PrivateAd', \'{post_text}\', \'{post_date})\'")
             print(f"Inserted into PrivateAd")
             self.connection.commit()
 
@@ -61,7 +62,8 @@ class DBConnection:
         if self.checkLifehackDuplicates(post_code, post_text, hashtag)[0] >= 1:
             print(f'Record {post_code}, {post_text}, {hashtag} already exists')
         else:
-            self.cur.execute(f"insert into Lifehack values ({post_code}, 'Lifehack', {post_text}, {hashtag}, {post_date})")
+            self.cur.execute(
+                f"insert into Lifehack values ({post_code}, 'Lifehack', \'{post_text}\', \'{hashtag}\', \'{post_date}\')")
             print(f"Inserted into Lifehack")
             self.connection.commit()
 
@@ -70,8 +72,10 @@ class DBConnection:
 
 
 # dbcon = DBConnection()
-# #dbcon.insert('News', "1, 'News', 'text', 'city', '11/12/2021'")
+# # dbcon.insert('News', "1, 'News', 'text', 'city', '11/12/2021'")
 #
+# #dbcon.insertNews(1, 'qqq', 'aaa', '11/11/2022')
 # print(dbcon.select('News', '*'))
 # print(dbcon.select('PrivateAd', '*'))
 # print(dbcon.select('Lifehack', '*'))
+# #dbcon.checkNewsDuplicates(1, 'qqq', 'aaa')
