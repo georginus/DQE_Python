@@ -31,7 +31,6 @@ class FileTxt:
         for element in src_text:
             parsed_list = element.split('---')
             post_code = parsed_list[0]
-            print(post_code)
             if post_code == '1':
                 text = sentenceFormatted(parsed_list[1])
                 city = parsed_list[2]
@@ -53,10 +52,3 @@ class FileTxt:
                 post = News('', '')
             self.fileWriteTxt('../result.txt', post.printPost())
         db.closeCursor()
-
-# FileTxt().parseFileTxt(FileTxt.fileReadTxt())
-
-# db.insertNews(post_code, text, city, post_date)
-# db.insertPrivateAd(post_code, text, end_date)
-# post_date = datetime.today().strftime('%d/%m/%Y %H.%M')
-# db.insertLifehack(post_code, text, hashtag, post_date)
