@@ -1,9 +1,9 @@
-import os
-import numpy as np
+# import os
+# import numpy as np
 import pandas as pd
-import psycopg2
-import nameFileTable
-from dataTypes import dataTypes
+# import psycopg2
+# import nameFileTable
+# from dataTypes import dataTypes
 from columnName import columnName
 from dbConnection import cursor, conn
 
@@ -17,8 +17,6 @@ df.head()
 cursor.execute(f"drop table if exists cph;")
 # create table
 cursor.execute(f"create table cph ({columnName(df)});")
-
-# insert into table
 
 # save df to csv
 df.to_csv('cph.csv', header=df.columns, index=False, encoding='utf-8')
@@ -35,12 +33,14 @@ COPY cph from STDIN WITH
     DELIMITER AS ','
 """
 
+# insert into table
 cursor.copy_expert(sql=SQL_STATEMENT, file=my_file)
-
 print('file copied to db')
 
 cursor.execute("grant select on table cph to public")
 conn.commit()
+
+cursor.execute('select * from cph')
 
 cursor.close()
 conn.close()
